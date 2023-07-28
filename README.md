@@ -1,2 +1,29 @@
-# Welcome to Scorpion
-Scorpion is a Python library for interacting with networks in an easier way. It is designed to be as simple as possible and easy to use. With a full library of tools, it can do anything from a range of port scanning to creating a network topology. The uses are unlimited.
+# Scorpion
+
+# Description
+Scorpion is an open-source Python library for network scanning and analysis. It provides tools to discover active hosts, perform port scans, identify services running on open ports, and conduct vulnerability assessments. With Scorpion, you can gain insights into your network's health, security, and performance.
+
+# Features
+- Network discovery: Find active hosts on the network using various scanning techniques.
+- Port scanning: Scan for open ports on discovered hosts to identify available services.
+- Service detection: Identify the services running on open ports to understand your network's configuration.
+- Vulnerability scanning: Integrate with vulnerability databases to identify potential risks.
+- Network topology mapping: Visualize the network layout to understand device connections.
+- Network traffic analysis: Capture and analyze network traffic for performance and security insights.
+
+# Installation
+To install Scorpion, use pip:
+
+```bash
+pip install scorpion
+```
+# Usage
+
+```python
+import Scorpion
+from Scorpion import *
+from Scorpion.scanning import portscanning
+```
+
+# Contributing
+Scorpion is open-source software, and we welcome contributions from the community. Please see the contributing.txt file for more information.

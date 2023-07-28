@@ -1,0 +1,51 @@
+==================================================================
+Contributing to Scorpion
+==================================================================
+
+We welcome and appreciate contributions from the community to make Scorpion better and more powerful. By contributing to this open-source project, you are joining a diverse and collaborative community of developers. To ensure a safe and ethical environment for everyone, please follow these guidelines when contributing to Scorpion.
+
+Code of Conduct
+---------------
+Before you start contributing, please read and adhere to our Code of Conduct. We expect all contributors to be respectful and considerate to others.
+
+How to Contribute
+-----------------
+Contributing to Scorpion can involve adding new features, fixing bugs, improving documentation, or enhancing existing functionality. Here are the general steps to contribute:
+
+1. Fork the repository to your GitHub account.
+
+2. Create a new branch from the main branch for your contributions. Give it a descriptive and meaningful name.
+
+3. Make your changes in the new branch, ensuring that your code is clear, concise, and adheres to our coding standards.
+
+4. If you are adding new features or functionality, consider adding corresponding unit tests to maintain code quality.
+
+5. Update the documentation if your changes impact existing functionality or introduce new features.
+
+6. Commit your changes and provide a descriptive commit message that explains the purpose of your changes.
+
+7. Push the changes to your forked repository.
+
+8. Open a pull request (PR) against the main branch of the original Scorpion repository.
+
+9. Your PR will be reviewed by maintainers, and feedback or changes may be requested. Be responsive to feedback and address any issues raised.
+
+10. Once your PR is approved, it will be merged into the main branch, and your contribution will become part of Scorpion.
+
+Guidelines
+----------
+- Respect intellectual property rights. Only contribute code and content that you have the right to use and distribute.
+
+- Do not include any malicious or harmful code in your contributions. Scorpion is intended to be a safe and reliable library for network scanning and analysis.
+
+- Ensure your code is well-tested, and it does not introduce regressions.
+
+- Write clear and comprehensive documentation for any new features or significant changes you introduce.
+
+- Be open to feedback and be willing to collaborate with others in the community.
+
+License
+-------
+By contributing to Scorpion, you agree to license your contributions under the GPL License This means that your contributions will be available for others to use, modify, and distribute under the same license.
+
+Thank you for your interest in contributing to Scorpion! Together, we can build a powerful and community-driven network scanning and analysis library.
