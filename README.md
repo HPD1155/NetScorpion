@@ -1,0 +1,2 @@
+# Welcome to Scorpion
+Scorpion is a Python library for interacting with networks in an easier way. It is designed to be as simple as possible and easy to use. With a full library of tools, it can do anything from a range of port scanning to creating a network topology. The uses are unlimited.
