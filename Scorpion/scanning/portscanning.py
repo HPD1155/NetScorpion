@@ -45,3 +45,39 @@ def scanTopPorts(host, display=False):
                 print("Port " + str(port) + " is open")
             except:
                 print("Port " + str(port) + " is closed")
+
+def scanPortRange(host, minPort, maxPort, display=False):
+    """
+    Scans a range of ports on a given host to check for open ports.
+    
+    Args:
+        host (str): The IP address or hostname of the target host.
+        minPort (int): The minimum port number to start scanning from.
+        maxPort (int): The maximum port number to scan up to.
+        display (bool, optional): Whether to display the open ports during the scan. 
+            Defaults to False.
+    
+    Returns:
+        list: A list of open ports found during the scan. 
+            Returns an empty list if no open ports are found.
+    """
+    if display == False:
+        openPorts = []
+        for port in range(minPort, maxPort):
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.connect((host, port))
+                sock.close()
+                openPorts.append(port)
+            except:
+                pass
+        return openPorts
+    else:
+        for port in range(minPort, maxPort):
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.connect((host, port))
+                sock.close()
+                print("Port " + str(port) + " is open")
+            except:
+                print("Port " + str(port) + " is closed")

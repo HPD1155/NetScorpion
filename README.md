@@ -27,3 +27,12 @@ from Scorpion.scanning import portscanning
 
 # Contributing
 Scorpion is open-source software, and we welcome contributions from the community. Please see the contributing.txt file for more information.
+
+# Contributions we need at the moment
+- new features Priority: HIGH
+- bug fixes Priority: LOW
+- documentation Priority: HIGH
+- unit tests Priority: MEDIUM
+- testing files Priority: MEDIUM
+- reviewing files Priority: MEDIUM
+- new components Priority: HIGH
