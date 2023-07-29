@@ -1,5 +1,5 @@
-import Scorpion.scanning.portscanning as ps
 
-print(ps.scanPort("127.0.0.1", 80))
+import Scorpion.warnings
 
-ps.scanTopPorts("127.0.0.1")
+Scorpion.warnings.Warnings.Async(True)
+import Scorpion.scanning.async_port_scanning as sw
