@@ -1,6 +1,6 @@
 # Scorpion
 
-Status: Not Publish/Package Ready
+[![Status]Not Publish/Package Ready]
 
 [![CodeQL](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml/badge.svg)](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml)
 
