@@ -1,6 +1,8 @@
 _warnings_enabled = True
 _async_enabled = True
 _nFilter_enabled = True
+import sys
+sys.dont_write_bytecode = True
 
 def _asyncWarning():
     """

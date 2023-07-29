@@ -1,21 +1,60 @@
 # import libs
+import socket
 import requests
 import sys
 import time
 import asyncio
 from Scorpion.scanning import portscanning
 from Scorpion import warnings as sw
-from Scorpion.scanning.portscanning import _sp as sp
+import tracemalloc
+tracemalloc.start()
 
-# get the top ports list from portscanning module
-top_ports = portscanning.top_ports
+import sys
+sys.dont_write_bytecode = True
 
 # Display the async warning if enabled
 if sw._warnings_enabled == True and sw._async_enabled == True:
     sw._asyncWarning()
 
+async def _sp(host, port, timeout=1):
+    """
+    Check if a port on a host is open.
+    
+    Args:
+        host (str): The hostname or IP address of the host to check.
+        port (int): The port number to check.
+        timeout (float, optional): The timeout value in seconds for the connection attempt.
+            Defaults to 1.
 
-async def scanPortAsync(host, port, tm=1):
+    Returns:
+        str: A message indicating whether the port is open or not.
+    """
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socket.setdefaulttimeout(timeout)
+        
+        result = s.connect_ex((host,port))
+        s.close()
+        if result ==0:
+            return "Port " + str(port) + " is open"
+        else:
+            return "Port " + str(port) + " is closed"
+    except KeyboardInterrupt:
+            sys.exit()
+    except socket.gaierror:
+            print("\n Hostname could not be resolved")
+            sys.exit()
+    except socket.error:
+            print("\n Server connection timed out or is not responding")
+            sys.exit()
+
+# get the top ports list from portscanning module
+top_ports = portscanning.top_ports
+
+
+
+
+def scanPortAsync(host, port, tm=1):
     """
     Asynchronously scans a given port on a specified host.
 
@@ -31,11 +70,11 @@ async def scanPortAsync(host, port, tm=1):
     """
     
     try:
-        return sp(host, port, timeout=tm)
+        return _sp(host, port, timeout=tm)
     except:
         print("Failed for unknown reason!")
     
-async def pScanTopPortsAsync(host, display=False, tm=1):
+def pScanTopPortsAsync(host, display=False, tm=1):
     sw._blockingWarning()
     """
     Asynchronously scans the top ports of a given host.
@@ -57,7 +96,7 @@ async def pScanTopPortsAsync(host, display=False, tm=1):
         openPorts = []
         for port in top_ports:
             try:
-                if "open" in await sp(host, port, timeout=tm):
+                if "open" in _sp(host, port, timeout=tm):
                     openPorts.append(port)
             except:
                 print("Failed for unknown reason!")
@@ -65,11 +104,11 @@ async def pScanTopPortsAsync(host, display=False, tm=1):
     else:
         for port in top_ports:
             try:
-                print(await sp(host, port, timeout=tm))
+                print(_sp(host, port, timeout=tm))
             except:
                 print("Failed for unknown reason!")
 
-async def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1):
+def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1):
     sw._blockingWarning()
     """
     Asynchronously scans a range of ports on a given host for open connections.
@@ -94,7 +133,7 @@ async def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1):
         openPorts = []
         for port in range(minPort, maxPort):
             try:
-                if "open" in await sp(host, port, timeout=tm):
+                if "open" in _sp(host, port, timeout=tm):
                     openPorts.append(port)
             except:
                 print("Failed for unknown reason!")

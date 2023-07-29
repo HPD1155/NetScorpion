@@ -4,10 +4,12 @@ import time
 import asyncio
 from Scorpion import warnings as sw
 import socket
+import sys
+sys.dont_write_bytecode = True
 
 top_ports = [21, 22, 23, 25, 53, 80, 110, 119, 123, 143, 161, 194, 443, 445, 587, 993, 995, 1723, 3306, 3389, 5900, 8080, 8443, 8888, 9000, 9001, 9090, 9100, 9200, 9300, 10000, 10050, 10051, 11211, 27017, 27018, 27019, 28017, 50000, 50070, 50030, 50060, 50075, 50090, 5432, 5984, 6379, 7001, 7002, 8000, 8001, 8002, 8008, 8081, 8082, 8088, 8090, 8091, 8444, 8880, 8883, 8888, 9001, 9090, 9091, 9200, 9300, 9418, 9999, 11211, 27017, 27018, 27019, 28017, 50000, 50070, 50030, 50060, 50075, 50090, 5432, 5984, 6379, 7001, 7002, 8000, 8001, 8002, 8008, 8081, 8082, 8088, 8090, 8091, 8444, 8880, 8883, 8888, 9001, 9090, 9091, 9200, 9300, 9418, 9999]
 
-def _sp(host, port, timeout=1):
+def __sp(host, port, timeout=1):
     """
     Check if a port on a host is open.
     
@@ -53,7 +55,7 @@ def scanPort(host, port, tm=1):
         str: A message indicating whether the port is open or closed.
     """
     try:
-        return _sp(host, port, timeout=tm)
+        return __sp(host, port, timeout=tm)
         
     except:
         print("Failed for unknown reason!")
@@ -65,7 +67,7 @@ def scanTopPorts(host, display=False, tm=1):
         for port in top_ports:
             try:
                 
-                if "open" in _sp(host, port, timeout=tm): 
+                if "open" in __sp(host, port, timeout=tm): 
                     openPorts.append(port)
                 else:
                     pass
@@ -76,7 +78,7 @@ def scanTopPorts(host, display=False, tm=1):
     else:
         for port in top_ports:
             try:
-                print(_sp(host, port, timeout=tm))
+                print(__sp(host, port, timeout=tm))
             except:
                 print("Failed for unknown reason!")
 
@@ -100,7 +102,7 @@ def scanPortRange(host, minPort, maxPort, display=False, tm=1):
         openPorts = []
         for port in range(minPort, maxPort):
             try:
-                if "open" in _sp(host, port, timeout=tm): 
+                if "open" in __sp(host, port, timeout=tm): 
                     openPorts.append(port)
             except:
                 print("Failed for unknown reason!")
@@ -108,7 +110,7 @@ def scanPortRange(host, minPort, maxPort, display=False, tm=1):
     else:
         for port in range(minPort, maxPort):
             try:
-                print(_sp(host, port, timeout=tm))
+                print(__sp(host, port, timeout=tm))
             except:
                 print("Failed for unknown reason!")
 
