@@ -2,6 +2,7 @@ import atexit as atx
 
 _warnings_enabled = True
 _async_enabled = True
+_nFilter_enabled = True
 
 def _asyncWarning():
     """
@@ -13,7 +14,14 @@ def _asyncWarning():
     Returns:
         None
     """
-    print("\033[33mTo use async functions, you need to use asyncio.run() or asyncio.create_task(), (to hide this warning please import Scorpion.warnings and then use 'Scorpion.warnings.showWarning(False)')\033[37m\n")
+    print("\033[33mTo use async functions, you need to use asyncio.run() or asyncio.create_task(), (to hide this warning please import Scorpion.warnings and then use 'Scorpion.warnings.showWarning(False) or Scorpion.warnings.Warnings.Async(False)')\033[37m\n")
+
+def _blockingWarning():
+    if _warnings_enabled == True and _nFilter_enabled == True: 
+        print("\033[33mThis function may cause your network or firewall to start blocking packets due to the number of requests being sent to the/a given amount of ports. Please make sure your firewall or network filter is not blocking packets.\033[37m")
+        print("\033[32mTo disable this warning, please use Scorpion.warnings.showWarning(False) or Scorpion.warnings.Warnings.nFilter(False)\033[37m\n")    
+    else:
+        pass
 
 def showWarning(tf):
     """
@@ -50,6 +58,9 @@ class Warnings:
         """
         global _async_enabled
         _async_enabled = tf
+    def nFilter(tf):
+        global _nFilter_enabled
+        _nFilter_enabled = tf
 
 
 if __name__ == "__main__":

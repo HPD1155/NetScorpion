@@ -1,5 +1,5 @@
+import Scorpion.scanning.portscanning as ps
+import Scorpion.warnings as sw
+import requests
 
-import Scorpion.warnings
-
-Scorpion.warnings.Warnings.Async(True)
-import Scorpion.scanning.async_port_scanning as sw
+print()

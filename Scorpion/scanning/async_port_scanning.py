@@ -1,4 +1,4 @@
-import socket
+import requests
 import sys
 import time
 import asyncio
@@ -25,15 +25,15 @@ async def scanPortAsync(host, port):
     Returns:
         str: A string indicating whether the port is open or closed.
     """
+    
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        await sock.connect((host, port))
-        sock.close()
+        await requests.get("http://127.0.0.1:" + port)
         return "Port " + str(port) + " is open\n"
     except:
         return "Port " + str(port) + " is closed\n"
     
 async def pScanTopPortsAsync(host, display=False):
+    sw._blockingWarning()
     """
     Asynchronously scans the top ports of a given host.
 
@@ -54,9 +54,7 @@ async def pScanTopPortsAsync(host, display=False):
         openPorts = []
         for port in top_ports:
             try:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                await sock.connect((host, port))
-                sock.close()
+                await requests.get("http://127.0.0.1:" + port)
                 openPorts.append(port)
             except:
                 pass
@@ -64,14 +62,13 @@ async def pScanTopPortsAsync(host, display=False):
     else:
         for port in top_ports:
             try:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                await sock.connect((host, port))
-                sock.close()
+                await requests.get("http://127.0.0.1:" + port)
                 print("Port " + str(port) + " is open")
             except:
                 print("Port " + str(port) + " is closed")
 
 async def pScanPortRangeAsync(host, minPort, maxPort, display=False):
+    sw._blockingWarning()
     """
     Asynchronously scans a range of ports on a given host for open connections.
 
@@ -95,9 +92,7 @@ async def pScanPortRangeAsync(host, minPort, maxPort, display=False):
         openPorts = []
         for port in range(minPort, maxPort):
             try:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                await sock.connect((host, port))
-                sock.close()
+                await requests.get("http://127.0.0.1:" + port)
                 openPorts.append(port)
             except:
                 pass
