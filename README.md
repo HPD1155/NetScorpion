@@ -2,6 +2,8 @@
 
 Status: Not Publish/Package Ready
 
+[![CodeQL](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml/badge.svg)](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml)
+
 # Description
 Scorpion is an open-source Python library for network scanning and analysis. It provides tools to discover active hosts, perform port scans, identify services running on open ports, and conduct vulnerability assessments. With Scorpion, you can gain insights into your network's health, security, and performance.
 
