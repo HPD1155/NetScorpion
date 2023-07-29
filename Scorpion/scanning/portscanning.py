@@ -3,11 +3,45 @@ import sys
 import time
 import asyncio
 from Scorpion import warnings as sw
+import socket
 
 top_ports = [21, 22, 23, 25, 53, 80, 110, 119, 123, 143, 161, 194, 443, 445, 587, 993, 995, 1723, 3306, 3389, 5900, 8080, 8443, 8888, 9000, 9001, 9090, 9100, 9200, 9300, 10000, 10050, 10051, 11211, 27017, 27018, 27019, 28017, 50000, 50070, 50030, 50060, 50075, 50090, 5432, 5984, 6379, 7001, 7002, 8000, 8001, 8002, 8008, 8081, 8082, 8088, 8090, 8091, 8444, 8880, 8883, 8888, 9001, 9090, 9091, 9200, 9300, 9418, 9999, 11211, 27017, 27018, 27019, 28017, 50000, 50070, 50030, 50060, 50075, 50090, 5432, 5984, 6379, 7001, 7002, 8000, 8001, 8002, 8008, 8081, 8082, 8088, 8090, 8091, 8444, 8880, 8883, 8888, 9001, 9090, 9091, 9200, 9300, 9418, 9999]
 
+def _sp(host, port, timeout=1):
+    """
+    Check if a port on a host is open.
+    
+    Args:
+        host (str): The hostname or IP address of the host to check.
+        port (int): The port number to check.
+        timeout (float, optional): The timeout value in seconds for the connection attempt.
+            Defaults to 1.
 
-def scanPort(host, port):
+    Returns:
+        str: A message indicating whether the port is open or not.
+    """
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socket.setdefaulttimeout(timeout)
+        
+        result = s.connect_ex((host,port))
+        s.close()
+        if result ==0:
+            return "Port " + str(port) + " is open"
+        else:
+            return "Port " + str(port) + " is closed"
+        
+         
+    except KeyboardInterrupt:
+            sys.exit()
+    except socket.gaierror:
+            print("\n Hostname could not be resolved")
+            sys.exit()
+    except socket.error:
+            print("\n Server connection timed out or is not responding")
+            sys.exit()
+
+def scanPort(host, port, tm=1):
     """
     Scan a given host and port to check if the port is open or closed.
 
@@ -19,31 +53,34 @@ def scanPort(host, port):
         str: A message indicating whether the port is open or closed.
     """
     try:
-        requests.get("http://127.0.0.1:" + port)
-        return "Port " + str(port) + " is open\n"
+        return _sp(host, port, timeout=tm)
+        
     except:
-        return "Port " + str(port) + " is closed\n"
+        print("Failed for unknown reason!")
 
-def scanTopPorts(host, display=False):
+def scanTopPorts(host, display=False, tm=1):
     sw._blockingWarning()
     if display == False:
         openPorts = []
         for port in top_ports:
             try:
-                requests.get("http://127.0.0.1:" + port)
-                openPorts.append(port)
+                
+                if "open" in _sp(host, port, timeout=tm): 
+                    openPorts.append(port)
+                else:
+                    pass
+
             except:
-                pass
+                print("Failed for unknown reason!")
         return openPorts
     else:
         for port in top_ports:
             try:
-                requests.get("http://127.0.0.1:" + port)
-                print("Port " + str(port) + " is open")
+                print(_sp(host, port, timeout=tm))
             except:
-                print("Port " + str(port) + " is closed")
+                print("Failed for unknown reason!")
 
-def scanPortRange(host, minPort, maxPort, display=False):
+def scanPortRange(host, minPort, maxPort, display=False, tm=1):
     sw._blockingWarning()
     """
     Scans a range of ports on a given host to check for open ports.
@@ -63,18 +100,17 @@ def scanPortRange(host, minPort, maxPort, display=False):
         openPorts = []
         for port in range(minPort, maxPort):
             try:
-                requests.get("http://127.0.0.1:" + port)
-                openPorts.append(port)
+                if "open" in _sp(host, port, timeout=tm): 
+                    openPorts.append(port)
             except:
-                pass
+                print("Failed for unknown reason!")
         return openPorts
     else:
         for port in range(minPort, maxPort):
             try:
-                requests.get("http://127.0.0.1:" + port)
-                print("Port " + str(port) + " is open")
+                print(_sp(host, port, timeout=tm))
             except:
-                print("Port " + str(port) + " is closed")
+                print("Failed for unknown reason!")
 
 def getTopPorts():
     """
