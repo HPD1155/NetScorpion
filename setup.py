@@ -2,11 +2,10 @@ from setuptools import setup, find_packages
 
 setup(
     name='netscorpion',
-    version='0.0.1',
+    version='0.0.4',
     author='Netscorpion',
-    author_email='NaN',
     description='The easier way to handle networking in Python',
-    packages=find_packages(),
+    packages = ['netscorpion', 'netscorpion.scanning'],
     install_requires=[
         # List any dependencies your package requires
         'requests',
@@ -15,7 +14,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GPL License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',

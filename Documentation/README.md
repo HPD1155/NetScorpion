@@ -6,10 +6,6 @@ Lets get started on what you need so far
 
 # Download NetScorpion
 
-Since the package is still very new and needs to be updated a significant amount for it to be used by non-beta and pre-release testers, you cannot install it using pip.
-You will need to clone the repository into your project to access the library.
-I will stil include the pip installation though.
-
 **pip**:
 ```bash
 pip install netscorpion

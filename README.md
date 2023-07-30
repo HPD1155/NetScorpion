@@ -1,7 +1,4 @@
 # NetScorpion
-
-![Status](https://img.shields.io/badge/Status-Not%20Publish%2FPackage%20Ready-red)
-
 [![CodeQL](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml/badge.svg)](https://github.com/HPD1155/NetScorpion/actions/workflows/codeql.yml)
 
 # Description
