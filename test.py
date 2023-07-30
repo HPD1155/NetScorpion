@@ -1,7 +1,7 @@
-import Scorpion.scanning.portscanning as ps
-import Scorpion.warnings as sw
+import netscorpion.scanning.portscanning as ps
+import netscorpion.warnings as sw
 sw.showWarning(False)
-import Scorpion.scanning.async_port_scanning as sp
+import netscorpion.scanning.async_port_scanning as sp
 import requests
 import asyncio
 

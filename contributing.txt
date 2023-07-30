@@ -1,8 +1,8 @@
 ==================================================================
-Contributing to Scorpion
+Contributing to NetScorpion
 ==================================================================
 
-We welcome and appreciate contributions from the community to make Scorpion better and more powerful. By contributing to this open-source project, you are joining a diverse and collaborative community of developers. To ensure a safe and ethical environment for everyone, please follow these guidelines when contributing to Scorpion.
+We welcome and appreciate contributions from the community to make NetScorpion better and more powerful. By contributing to this open-source project, you are joining a diverse and collaborative community of developers. To ensure a safe and ethical environment for everyone, please follow these guidelines when contributing to Scorpion.
 
 Code of Conduct
 ---------------
@@ -10,7 +10,7 @@ Before you start contributing, please read and adhere to our Code of Conduct. We
 
 How to Contribute
 -----------------
-Contributing to Scorpion can involve adding new features, fixing bugs, improving documentation, or enhancing existing functionality. Here are the general steps to contribute:
+Contributing to NetScorpion can involve adding new features, fixing bugs, improving documentation, or enhancing existing functionality. Here are the general steps to contribute:
 
 1. Fork the repository to your GitHub account.
 
@@ -26,17 +26,17 @@ Contributing to Scorpion can involve adding new features, fixing bugs, improving
 
 7. Push the changes to your forked repository.
 
-8. Open a pull request (PR) against the main branch of the original Scorpion repository.
+8. Open a pull request (PR) against the main branch of the original NetScorpion repository.
 
 9. Your PR will be reviewed by maintainers, and feedback or changes may be requested. Be responsive to feedback and address any issues raised.
 
-10. Once your PR is approved, it will be merged into the main branch, and your contribution will become part of Scorpion.
+10. Once your PR is approved, it will be merged into the main branch, and your contribution will become part of NetScorpion.
 
 Guidelines
 ----------
 - Respect intellectual property rights. Only contribute code and content that you have the right to use and distribute.
 
-- Do not include any malicious or harmful code in your contributions. Scorpion is intended to be a safe and reliable library for network scanning and analysis.
+- Do not include any malicious or harmful code in your contributions. NetScorpion is intended to be a safe and reliable library for network scanning and analysis.
 
 - Ensure your code is well-tested, and it does not introduce regressions.
 
@@ -46,6 +46,6 @@ Guidelines
 
 License
 -------
-By contributing to Scorpion, you agree to license your contributions under the GPL License This means that your contributions will be available for others to use, modify, and distribute under the same license.
+By contributing to NetScorpion, you agree to license your contributions under the GPL License This means that your contributions will be available for others to use, modify, and distribute under the same license.
 
-Thank you for your interest in contributing to Scorpion! Together, we can build a powerful and community-driven network scanning and analysis library.
+Thank you for your interest in contributing to NetScorpion! Together, we can build a powerful and community-driven network scanning and analysis library.

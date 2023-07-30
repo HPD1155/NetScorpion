@@ -4,8 +4,8 @@ import requests
 import sys
 import time
 import asyncio
-from Scorpion.scanning import portscanning
-from Scorpion import warnings as sw
+from netscorpion.scanning import portscanning
+from netscorpion import warnings as sw
 import tracemalloc
 tracemalloc.start()
 

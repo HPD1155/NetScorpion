@@ -2,7 +2,7 @@ import requests
 import sys
 import time
 import asyncio
-from Scorpion import warnings as sw
+from netscorpion import warnings as sw
 import socket
 import sys
 sys.dont_write_bytecode = True
@@ -61,6 +61,19 @@ def scanPort(host, port, tm=1):
         print("Failed for unknown reason!")
 
 def scanTopPorts(host, display=False, tm=1):
+    """
+    Scans the top ports of a given host for open ports.
+    Uses the top_ports list from portscanning module
+    
+    Args:
+        host (str): The IP address or hostname of the target host.
+        display (bool, optional): Whether to display the results of each port scan. Defaults to False.
+        tm (int, optional): The timeout value for each port scan. Defaults to 1.
+    
+    Returns:
+        list: A list of open ports found during the scan. If `display` is True, the function does not return anything.
+    """
+    
     sw._blockingWarning()
     if display == False:
         openPorts = []
