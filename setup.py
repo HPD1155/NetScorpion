@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='netscorpion',
-    version='Pre-0.0.1-Alpha',
+    version='0.0.1',
     author='Netscorpion',
     author_email='NaN',
     description='The easier way to handle networking in Python',
