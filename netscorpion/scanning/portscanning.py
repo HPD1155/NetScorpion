@@ -135,3 +135,4 @@ def getTopPorts():
         top_ports (list): A list of the top ports.
     """
     return top_ports
+
