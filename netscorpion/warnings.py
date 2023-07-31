@@ -1,6 +1,7 @@
 _warnings_enabled = True
 _async_enabled = True
 _nFilter_enabled = True
+_multithreading_enabled = True
 import sys
 sys.dont_write_bytecode = True
 
@@ -25,6 +26,21 @@ def _blockingWarning():
         print("\033[32mTo disable this warning, please use Scorpion.warnings.showWarning(False) or Scorpion.warnings.Warnings.nFilter(False)\033[37m\n")    
     else:
         pass
+
+def _multithreading_warning():
+    """
+    Print a warning message about multithreading.
+
+    This function prints a warning message to the console about interacting with CPU threads. It advises caution when using the function and provides instructions for disabling the warning.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
+    print("\033[33mPlease use this function with caution as you are interacting with your CPU threads.\033[37m")
+    print("\033[32mTo disable this warning, please use Scorpion.warnings.showWarning(False) or Scorpion.warnings.Warnings.threading(False)\033[37m\n")    
 
 def showWarning(tf):
     """
@@ -76,6 +92,10 @@ class Warnings:
         """
         global _nFilter_enabled
         _nFilter_enabled = tf
+    
+    def multithreading(tf):
+        global _multithreading_enabled
+        _multithreading_enabled = tf
 
 
 if __name__ == "__main__":
