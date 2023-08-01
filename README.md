@@ -9,6 +9,7 @@
 ![Issues](https://img.shields.io/github/issues/HPD1155/NetScorpion.svg?style=flat-square)
 ![Closed issues](https://img.shields.io/github/issues-closed/HPD1155/NetScorpion.svg?style=flat-square)
 
+![NetScorpion logo](https://github.com/HPD1155/NetScorpion/blob/main/images/logo.png)
 
 # Description
 NetScorpion is an open-source Python library for network scanning and analysis. It provides tools to discover active hosts, perform port scans, identify services running on open ports, and conduct vulnerability assessments. With NetScorpion, you can gain insights into your network's health, security, and performance.
