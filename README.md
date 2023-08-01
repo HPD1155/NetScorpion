@@ -2,7 +2,7 @@
 [![CodeQL](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml/badge.svg)](https://github.com/HPD1155/NetScorpion/actions/workflows/codeql.yml)
 ![Version: 0.0.4](https://img.shields.io/badge/Version-0.0.4-blue.svg)
 ![License: GPL](https://img.shields.io/badge/License-GPL-blue.svg)
-![Testing Status](https://img.shields.io/badge/Build-passing-brightgreen.svg)
+![Testing Status](https://img.shields.io/badge/Tests-passing-brightgreen.svg)
 ![Stars](https://img.shields.io/github/stars/HPD1155/NetScorpion.svg?style=social)
 ![Forks](https://img.shields.io/github/forks/HPD1155/NetScorpion.svg?style=social)
 ![Watchers](https://img.shields.io/github/watchers/HPD1155/NetScorpion.svg?style=social)
