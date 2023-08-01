@@ -1,5 +1,15 @@
 # NetScorpion
 [![CodeQL](https://github.com/HPD1155/Scorpion/actions/workflows/codeql.yml/badge.svg)](https://github.com/HPD1155/NetScorpion/actions/workflows/codeql.yml)
+![Version: 0.0.4](https://img.shields.io/badge/Version-0.0.4-blue.svg)
+![License: GPL](https://img.shields.io/badge/License-GPL-blue.svg)
+![Testing Status](https://img.shields.io/badge/Build-passing-brightgreen.svg)
+![Stars](https://img.shields.io/github/stars/HPD1155/NetScorpion.svg?style=social)
+![Forks](https://img.shields.io/github/forks/HPD1155/NetScorpion.svg?style=social)
+![Watchers](https://img.shields.io/github/watchers/HPD1155/NetScorpion.svg?style=social)
+![Issues](https://img.shields.io/github/issues/HPD1155/NetScorpion.svg?style=flat-square)
+![Closed issues](https://img.shields.io/github/issues-closed/HPD1155/NetScorpion.svg?style=flat-square)
+![Pull requests](https://img.shields.io/github/pulls/HPD1155/NetScorpion.svg?style=flat-square)
+![Closed pull requests](https://img.shields.io/github/issues-closed-pull-requests/HPD1155/NetScorpion.svg?style=flat-square)
 
 # Description
 NetScorpion is an open-source Python library for network scanning and analysis. It provides tools to discover active hosts, perform port scans, identify services running on open ports, and conduct vulnerability assessments. With NetScorpion, you can gain insights into your network's health, security, and performance.
