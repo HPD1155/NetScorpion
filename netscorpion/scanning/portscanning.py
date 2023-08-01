@@ -83,7 +83,7 @@ def scanPort(host, port, tm=1):
     except:
         print("Failed for unknown reason!")
 
-def scanTopPorts(host, display=False, tm=1):
+def scanTopPorts(host, display=False, tm=1, exclude: list = [int]):
     """
     Scans the top ports of a given host for open ports.
     Uses the top_ports list from portscanning module
@@ -102,23 +102,24 @@ def scanTopPorts(host, display=False, tm=1):
         openPorts = []
         for port in top_ports:
             try:
-                
-                if "open" in __sp(host, port, timeout=tm): 
-                    openPorts.append(port)
-                else:
-                    pass
+                if port not in exclude:
+                    if "open" in __sp(host, port, timeout=tm): 
+                        openPorts.append(port)
+                    else:
+                        pass
 
             except:
                 print("Failed for unknown reason!")
         return openPorts
     else:
         for port in top_ports:
-            try:
-                print(__sp(host, port, timeout=tm))
-            except:
-                print("Failed for unknown reason!")
+            if port not in exclude:
+                try:
+                    print(__sp(host, port, timeout=tm))
+                except:
+                    print("Failed for unknown reason!")
 
-def scanPortRange(host, minPort, maxPort, display=False, tm=1):
+def scanPortRange(host, minPort, maxPort, display=False, tm=1, exclude: list = [int]):
     sw._blockingWarning()
     """
     Scans a range of ports on a given host to check for open ports.
@@ -137,18 +138,20 @@ def scanPortRange(host, minPort, maxPort, display=False, tm=1):
     if display == False:
         openPorts = []
         for port in range(minPort, maxPort):
-            try:
-                if "open" in __sp(host, port, timeout=tm): 
-                    openPorts.append(port)
-            except:
-                print("Failed for unknown reason!")
+                if port not in exclude:
+                    try:
+                        if "open" in __sp(host, port, timeout=tm): 
+                            openPorts.append(port)
+                    except:
+                        print("Failed for unknown reason!")
         return openPorts
     else:
         for port in range(minPort, maxPort):
-            try:
-                print(__sp(host, port, timeout=tm))
-            except:
-                print("Failed for unknown reason!")
+            if port not in exclude:
+                try:
+                    print(__sp(host, port, timeout=tm))
+                except:
+                    print("Failed for unknown reason!")
 
 def getTopPorts():
     """
@@ -162,7 +165,7 @@ def getTopPorts():
 class multithreading:
     sw._blockingWarning()
 
-    def scanPortRange(host, minPort, maxPort, display=False, timeout=1, threads=2):
+    def scanPortRange(host, minPort, maxPort, display=False, timeout=1, threads=2, exclude: list = [int]):
         """
         Scans a range of ports on a given host to check for open ports.
 
@@ -186,26 +189,26 @@ class multithreading:
 
         # iterates through the ports
         for port in range(minPort, maxPort):
+            if port not in exclude:
+                # Check if the the highest port scanned is greater than the maxports
+                if _highest_port_scanned > maxPort:
+                    break
+                
+                # Running threads
+                _threads = []
+                
+                # Set up the threads
+                for i in range(threads):
+                    thread = threading.Thread(target=_threadingSP, args=(host, port, display, timeout))
+                    _threads.append(thread)
 
-            # Check if the the highest port scanned is greater than the maxports
-            if _highest_port_scanned > maxPort:
-                break
-            
-            # Running threads
-            _threads = []
-            
-            # Set up the threads
-            for i in range(threads):
-                thread = threading.Thread(target=_threadingSP, args=(host, port, display, timeout))
-                _threads.append(thread)
+                # Start the threads for the current port
+                for thread in _threads:
+                    thread.start()
 
-            # Start the threads for the current port
-            for thread in _threads:
-                thread.start()
-
-            # Wait for all threads to finish for the current port
-            for thread in _threads:
-                thread.join()
+                # Wait for all threads to finish for the current port
+                for thread in _threads:
+                    thread.join()
         
         # returns the open ports
         return _open

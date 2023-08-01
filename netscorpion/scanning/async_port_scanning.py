@@ -74,7 +74,7 @@ def scanPortAsync(host, port, tm=1):
     except:
         print("Failed for unknown reason!")
     
-def pScanTopPortsAsync(host, display=False, tm=1):
+def pScanTopPortsAsync(host, display=False, tm=1, exclude: list = [int]):
     sw._blockingWarning()
     """
     Asynchronously scans the top ports of a given host.
@@ -95,20 +95,22 @@ def pScanTopPortsAsync(host, display=False, tm=1):
     if display == False:
         openPorts = []
         for port in top_ports:
-            try:
-                if "open" in _sp(host, port, timeout=tm):
-                    openPorts.append(port)
-            except:
-                print("Failed for unknown reason!")
+            if port not in exclude:
+                try:
+                    if "open" in _sp(host, port, timeout=tm):
+                        openPorts.append(port)
+                except:
+                    print("Failed for unknown reason!")
         return openPorts
     else:
         for port in top_ports:
-            try:
-                print(_sp(host, port, timeout=tm))
-            except:
-                print("Failed for unknown reason!")
+            if port not in exclude:
+                try:
+                    print(_sp(host, port, timeout=tm))
+                except:
+                    print("Failed for unknown reason!")
 
-def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1):
+def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1, exclude: list = [int]):
     sw._blockingWarning()
     """
     Asynchronously scans a range of ports on a given host for open connections.
@@ -132,11 +134,24 @@ def pScanPortRangeAsync(host, minPort, maxPort, display=False, tm=1):
     if display == False:
         openPorts = []
         for port in range(minPort, maxPort):
-            try:
-                if "open" in _sp(host, port, timeout=tm):
-                    openPorts.append(port)
-            except:
-                print("Failed for unknown reason!")
+            if port not in exclude:
+                try:
+                    if "open" in _sp(host, port, timeout=tm):
+                        openPorts.append(port)
+                except:
+                    print("Failed for unknown reason!")
+        return openPorts
+    else:
+        for port in range(minPort, maxPort):
+            if port not in exclude:
+                try:
+                    result = _sp(host, port, timeout=tm)
+                    print(result)
+                    if "open" in result:
+                        openPorts.append(port)
+                except:
+                    print("Failed for unknown reason!")
+        return openPorts
 
 __warningmessage = """
 You cannot run this file directly. Please use the following:
