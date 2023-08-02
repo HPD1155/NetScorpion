@@ -6,5 +6,7 @@ import netscorpion.scanning.async_port_scanning as sp
 import requests
 import asyncio
 
-# How to use multithreading     IP           port port show output timeout threads
-ps.multithreading.scanPortRange('127.0.0.1', 400, 500, display=True, timeout=1, threads=8)
+excluded = [5, 6, 10, 20]
+
+
+ps.multithreading.scanPortRange("127.0.0.1", 1, 100, display=True, exclude=excluded, threads=3, save="test.csv")
